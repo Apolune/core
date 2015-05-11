@@ -14,8 +14,7 @@
 	],
 	"require": {
 		"php": ">=5.4.0",
-		"apolune/contracts": "self.version",
-		"michelf/php-markdown": "~1.5"
+		"apolune/contracts": "self.version"
 	},
 	"autoload": {
 		"files": [
