@@ -5,7 +5,6 @@ namespace Apolune\Core\Providers;
 use Illuminate\Routing\Router;
 use Apolune\Contracts\Account\Player;
 use Apolune\Contracts\Account\Account;
-use Apolune\Profile\Exceptions\NotFoundPlayerException;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -31,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        // 
+        // ...
     }
 
     /**
@@ -43,15 +42,6 @@ class RouteServiceProvider extends ServiceProvider
     protected function registerModels(Router $router)
     {
         $router->model('account', Account::class);
-        
-        $router->model('player', Player::class, function ($value) {
-            $value = str_replace('-', ' ', urldecode($value));
-
-            if ($model = app('player')->whereName($value)->first()) {
-                return $model;
-            }
-
-            throw new NotFoundPlayerException;
-        });
+        $router->model('player', Player::class);
     }
 }
